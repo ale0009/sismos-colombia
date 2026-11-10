@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cómo se hizo · ¿Tembló en Colombia?</title>
+  <meta name="description" content="De dónde salen los datos de sismos, cómo se procesan y qué tiene que ver con la gestión de riesgos (ISO 31000 y PMI).">
+  <meta name="color-scheme" content="light dark">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bangers&family=IBM+Plex+Mono:wght@400;600&display=swap">
+  <link rel="stylesheet" href="../css/estilo.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23F9F9F7'/%3E%3Cpath d='M2 17h6l3-9 5 16 4-12 3 5h7' fill='none' stroke='%23CB433E' stroke-width='3'/%3E%3C/svg%3E">
+  <script type="module" src="../js/proceso.js"></script>
+</head>
+<body class="pagina-proceso">
+  <a class="saltar" href="#contenido">Saltar al contenido</a>
+  <header class="cabecera">
+    <span class="kanji" aria-hidden="true">記録</span>
+    <div class="titulo">
+      <p class="antetitulo">Proceso · ¿Tembló en Colombia?</p>
+      <h1>Cómo se hizo</h1>
+    </div>
+    <nav class="nav">
+      <a class="boton-linea" href="../">Volver al mapa</a>
+      <button type="button" class="boton-linea" id="tema" aria-label="Cambiar tema">Tema: auto</button>
+    </nav>
+  </header>
+
+  <main class="articulo" id="contenido">
+    <nav class="indice vineta" aria-label="En esta página">
+      <ol>
+        <li><a href="#problema">El problema</a></li>
+        <li><a href="#riesgos">Gestión de riesgos</a></li>
+        <li><a href="#datos">De dónde salen los datos</a></li>
+        <li><a href="#metodo">Cómo se procesan</a></li>
+        <li><a href="#graficas">Lo que dicen los datos</a></li>
+        <li><a href="#diseno">Decisiones de diseño</a></li>
+        <li><a href="#limites">Limitaciones y fe de erratas</a></li>
+        <li><a href="#fuentes">Fuentes</a></li>
+      </ol>
+    </nav>
+
+    <section id="problema" class="bloque">
+      <h2>1 · El problema</h2>
+      <p>Después de un temblor la primera pregunta es siempre la misma: <strong>¿tembló o fui yo?</strong> Y la segunda: ¿dónde, qué tan fuerte, a qué hora? Los datos existen y son públicos, pero están en catálogos técnicos, en inglés, en hora UTC y sin un mapa centrado en Colombia.</p>
+      <p>La herramienta responde eso en un vistazo: un <strong>sí o no</strong> grande, un mapa de calor y puntos, y la lista de los cinco más fuertes con la hora de Bogotá.</p>
+    </section>
+
+    <section id="riesgos" class="bloque">
+      <h2>2 · Qué tiene que ver con la gestión de riesgos</h2>
+      <p>Mario y David estudiaron la gestión de riesgos de proyectos con el PMBOK 7.ª edición (PMI, 2021) y la norma ISO 31000:2018, en un plan de riesgos para un proveedor de servicios gestionados y centros de datos (caso de estudio, anonimizado). Ese trabajo sigue el proceso de la norma en seis etapas:</p>
+      <ol class="etapas">
+        <li><strong>Establecer el contexto</strong> (PESTEL y FODA).</li>
+        <li><strong>Identificar</strong> los riesgos (tormenta de ideas, listas de verificación, juicio de expertos).</li>
+        <li><strong>Analizar</strong> con la matriz de probabilidad por impacto (P × I).</li>
+        <li><strong>Evaluar</strong>: niveles Alto, Medio y Bajo.</li>
+        <li><strong>Tratar</strong> con las cuatro estrategias: evitar, transferir, mitigar o aceptar.</li>
+        <li><strong>Monitorear y revisar</strong> con indicadores de seguimiento.</li>
+      </ol>
+      <div class="dos-col">
+        <figure class="vineta figura">
+          <div id="matriz"></div>
+          <figcaption>Matriz P × I del plan estudiado: escala de 1 a 5 en cada eje; <span class="tag m-alto-t">Alto</span> si P × I ≥ 10, <span class="tag m-medio-t">Medio</span> de 5 a 9, <span class="tag m-bajo-t">Bajo</span> si ≤ 4.</figcaption>
+        </figure>
+        <div>
+          <p>En esa escala, la probabilidad va de <em>Raro</em> (menos del 10 %) a <em>Casi seguro</em> (más del 70 %), y el impacto de <em>Insignificante</em> a <em>Crítico</em> («compromete los objetivos centrales del proyecto»).</p>
+          <p>Un sismo es una <strong>amenaza externa</strong> a cualquier proyecto con infraestructura física. Esta herramienta no le pone un número de P ni de I (eso exige conocer el activo, su ubicación y su vulnerabilidad), pero sí alimenta dos etapas del proceso:</p>
+          <ul>
+            <li><strong>Identificar y analizar:</strong> el historial de 30 días muestra dónde se concentra la actividad y a qué profundidad, un insumo para discutir la probabilidad con datos y no con intuición.</li>
+            <li><strong>Monitorear y revisar:</strong> un tablero en vivo es un indicador; el «sí o no» funciona como el <em>disparador</em> o señal temprana que el plan pide documentar para cada riesgo.</li>
+          </ul>
+          <p class="nota-fuente">El plan original no incluía un riesgo sísmico: esto es una extensión hecha aquí, no una cifra del trabajo.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="datos" class="bloque">
+      <h2>3 · De dónde salen los datos</h2>
+      <p>Del <strong>Servicio Geológico de los Estados Unidos (USGS)</strong>, que publica su catálogo mundial de sismos en una API abierta (estándar FDSN), sin clave y con CORS habilitado: el navegador puede pedir los datos directamente, sin servidor intermedio. La consulta es:</p>
+      <pre class="codigo"><code>https://earthquake.usgs.gov/fdsnws/event/1/query
+  ?format=geojson
+  &amp;minlatitude=-5 &amp;maxlatitude=14
+  &amp;minlongitude=-82 &amp;maxlongitude=-66
+  &amp;starttime=&lt;hace 30 días&gt; &amp;orderby=time</code></pre>
+      <p>La respuesta es un <strong>GeoJSON</strong> (un JSON estándar para datos geográficos): cada sismo es un punto con tres coordenadas y sus propiedades. Se usan estas:</p>
+      <dl class="glosario">
+        <dt>coordinates</dt><dd>longitud, latitud y <strong>profundidad</strong> del hipocentro en km (el punto bajo tierra donde empezó la ruptura; el epicentro es su proyección en la superficie).</dd>
+        <dt>mag · magType</dt><dd>la <strong>magnitud</strong> y el método con que se calculó (mb, mww, mwr…). La magnitud es logarítmica: cada unidad más es un sismo mucho mayor, no «un poco» mayor.</dd>
+        <dt>time</dt><dd>el instante en milisegundos desde 1970, en UTC. Se convierte a la hora de Bogotá (UTC − 5, sin horario de verano).</dd>
+        <dt>place · url · felt</dt><dd>la descripción del lugar (en inglés), la ficha del evento y cuántas personas reportaron haberlo sentido.</dd>
+      </dl>
+      <p>La profundidad se agrupa en las tres clases habituales en sismología: <span class="tag prof-superficial-t">superficial</span> menos de 70 km, <span class="tag prof-intermedio-t">intermedio</span> de 70 a 300 km y <span class="tag prof-profundo-t">profundo</span> 300 km o más.</p>
+    </section>
+
+    <section id="metodo" class="bloque">
+      <h2>4 · Cómo se procesan</h2>
+      <ol class="tuberia" aria-label="Flujo de los datos">
+        <li><span class="paso">1</span><strong>Pedir</strong><small>una sola llamada de 30 días; 24 h y 7 d se filtran en el navegador</small></li>
+        <li><span class="paso">2</span><strong>Limpiar</strong><small>fuera lo que no es sismo, sin magnitud o duplicado</small></li>
+        <li><span class="paso">3</span><strong>Filtrar</strong><small>periodo y magnitud mínima</small></li>
+        <li><span class="paso">4</span><strong>Proyectar</strong><small>(lon, lat) → (x, y)</small></li>
+        <li><span class="paso">5</span><strong>Calor</strong><small>rejilla con núcleo gaussiano</small></li>
+        <li><span class="paso">6</span><strong>Dibujar</strong><small>SVG: países, calor, puntos, ¡RUMBLE!</small></li>
+      </ol>
+      <div class="dos-col">
+        <div>
+          <h3>Proyección</h3>
+          <p>Equirectangular con corrección de coseno: <code>x = (lon − lon₀) · cos(φ̄) · k</code>, <code>y = (lat_norte − lat) · k</code>, con φ̄ = 4,5°, el centro de la caja. Cerca del ecuador casi no deforma, se invierte con una línea y se puede probar sin librerías.</p>
+          <h3>¿En Colombia o no?</h3>
+          <p>El «sí» solo cuenta los epicentros <strong>dentro</strong> del contorno de Colombia (prueba de punto en polígono por rayo, con el contorno de Natural Earth). Lo del mar o de los países vecinos aparece en el mapa, pero no convierte la respuesta en «sí».</p>
+        </div>
+        <div>
+          <h3>Mapa de calor</h3>
+          <p>Cada sismo suma una campana gaussiana sobre una rejilla de 128 columnas. Su peso es <code>2^(M − 4)</code>: se duplica por cada unidad de magnitud. Es una decisión visual para que un M 6 destaque sin borrar a los M 4; <strong>no</strong> mide energía ni peligro. La rejilla se pinta en un canvas pequeño y el navegador la amplía con suavizado: de ahí el difuminado.</p>
+          <p>Todo esto son funciones puras en <code>js/sismos.js</code> y <code>js/geo.js</code>, con pruebas <code>node --test</code> sobre un GeoJSON de muestra.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="graficas" class="bloque">
+      <h2>5 · Lo que dicen los datos</h2>
+      <p class="origen" id="origen"><span class="chip chip-carga">Cargando</span></p>
+      <div class="dos-col">
+        <figure class="vineta figura">
+          <h3>Distribución de magnitudes (30 días)</h3>
+          <div id="g-hist" class="g-caja"><p class="vacio">Cargando…</p></div>
+          <figcaption>Sismos por clase de 0,5 de magnitud. Calculado aquí.</figcaption>
+        </figure>
+        <figure class="vineta figura">
+          <h3>Sismos por día (hora de Bogotá)</h3>
+          <div id="g-dia" class="g-caja"><p class="vacio">Cargando…</p></div>
+          <figcaption>Barra roja: el día del sismo más fuerte. Calculado aquí.</figcaption>
+        </figure>
+      </div>
+      <div class="cifras vineta" id="cifras" aria-live="polite"></div>
+    </section>
+
+    <section id="diseno" class="bloque">
+      <h2>6 · Decisiones de diseño</h2>
+      <div class="dos-col">
+        <div>
+          <ul class="decisiones">
+            <li><strong>SVG propio en vez de Leaflet y teselas.</strong> Un contorno de 34 KB (Natural Earth, dominio público) basta para ubicarse; no hay que cumplir la política de uso de teselas de OpenStreetMap, funciona sin conexión con el respaldo y adopta la paleta del cómic.</li>
+            <li><strong>Una sola llamada.</strong> Se piden 30 días y se filtra en el navegador: cambiar de periodo es instantáneo y el USGS recibe menos peticiones (se refresca cada 5 minutos, solo si la pestaña está visible).</li>
+            <li><strong>Hora de Bogotá calculada a mano.</strong> UTC − 5 fijo, sin depender de la zona horaria del equipo de quien mira.</li>
+            <li><strong>Color y tamaño con dos significados.</strong> El tamaño es la magnitud; el color, la profundidad (rojo superficial, cian intermedio, tinta profundo), siempre con borde de tinta y leyenda.</li>
+            <li><strong>Onomatopeya sobria.</strong> Un solo «¡RUMBLE!», en el más fuerte del periodo; el pulso se apaga con <code>prefers-reduced-motion</code>.</li>
+            <li><strong>Abre en 7 días.</strong> En 24 h el mapa suele estar casi vacío; 7 días muestra el patrón y el «sí o no» se adapta al periodo elegido.</li>
+          </ul>
+        </div>
+        <div>
+          <figure class="vineta figura">
+            <h3>Paleta</h3>
+            <div class="paleta">
+              <span style="--c:#F9F9F7">Papel<br><code>#F9F9F7</code></span>
+              <span style="--c:#0A090A" class="osc">Tinta<br><code>#0A090A</code></span>
+              <span style="--c:#CB433E" class="osc">Rojo<br><code>#CB433E</code></span>
+              <span style="--c:#438FB8" class="osc">Cian<br><code>#438FB8</code></span>
+              <span style="--c:#141C33" class="osc">Noche<br><code>#141C33</code></span>
+              <span style="--c:#BA3937" class="osc">Bermellón<br><code>#BA3937</code></span>
+            </div>
+          </figure>
+          <figure class="vineta figura">
+            <h3>Versiones del mapa</h3>
+            <div class="versiones">
+              <div><div id="v1" class="mini-mapa"></div><p>v1 · solo puntos: se leen los eventos, no las zonas.</p></div>
+              <div><div id="v2" class="mini-mapa"></div><p>v2 · calor + puntos: la zona activa salta a la vista.</p></div>
+            </div>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="limites" class="bloque">
+      <h2>7 · Limitaciones y fe de erratas</h2>
+      <ul>
+        <li><strong>El USGS no es la fuente oficial de Colombia.</strong> Su catálogo internacional registra sobre todo sismos moderados o mayores; los pequeños y los reportes oficiales los publica el Servicio Geológico Colombiano (SGC). <span id="mag-min-txt"></span></li>
+        <li><strong>Las magnitudes mezclan métodos</strong> (mb, mww, mwr…). Se comparan juntas porque así las publica el USGS, pero no son exactamente la misma escala. <span id="tipos-txt"></span></li>
+        <li><strong>Los datos cambian.</strong> El USGS revisa magnitudes y ubicaciones después del evento; la ficha enlazada siempre tiene la versión vigente.</li>
+        <li><strong>El contorno está simplificado</strong> (Natural Earth a escala 1:50 millones, coordenadas redondeadas a 0,01°). Un epicentro a pocos kilómetros de la costa o de una frontera puede quedar del lado equivocado.</li>
+        <li><strong>El mapa de calor no es un mapa de amenaza sísmica.</strong> Muestra dónde hubo sismos en el periodo, no dónde es probable que los haya.</li>
+        <li><strong>Los lugares vienen en inglés</strong>; se traducen el rumbo y algunos países («80 km al ENE de…»), el resto queda igual.</li>
+      </ul>
+      <div class="errata vineta">
+        <h3>Fe de erratas de la fuente de riesgos</h3>
+        <p>El plan de riesgos estudiado dice que los doce riesgos se reparten en «seis categorías», pero enumera <strong>siete</strong>: organizacional, técnica, recursos, cronograma, presupuesto, alcance y legal/regulatorio. Aquí no se usan esas categorías; se deja constancia.</p>
+      </div>
+    </section>
+
+    <section id="fuentes" class="bloque">
+      <h2>8 · Fuentes</h2>
+      <ul class="fuentes">
+        <li>U.S. Geological Survey. (s. f.). <em>API Documentation — Earthquake Catalog (FDSN Event Web Service)</em>. <a href="https://earthquake.usgs.gov/fdsnws/event/1/">earthquake.usgs.gov/fdsnws/event/1/</a></li>
+        <li>U.S. Geological Survey. (s. f.). <em>GeoJSON Summary Format</em>. <a href="https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php">earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php</a></li>
+        <li>U.S. Geological Survey. (s. f.). <em>Magnitude Types</em>. <a href="https://www.usgs.gov/programs/earthquake-hazards/magnitude-types">usgs.gov/programs/earthquake-hazards/magnitude-types</a></li>
+        <li>Natural Earth. (s. f.). <em>Admin 0 – Countries, 1:50m</em> (dominio público). <a href="https://www.naturalearthdata.com/">naturalearthdata.com</a></li>
+        <li>Servicio Geológico Colombiano. (s. f.). <em>Sismos</em>. <a href="https://www.sgc.gov.co/">sgc.gov.co</a></li>
+        <li>Project Management Institute. (2021). <em>A guide to the project management body of knowledge (PMBOK Guide)</em> (7.ª ed.). PMI.</li>
+        <li>International Organization for Standardization. (2018). <em>ISO 31000:2018 Risk management — Guidelines</em>. ISO.</li>
+        <li>Puerta, M. y Rincón, D. (s. f.). Plan de gestión de riesgos bajo PMI e ISO 31000 (trabajo académico, Ingeniería de Sistemas, Universidad ECCI).</li>
+      </ul>
+    </section>
+
+    <a class="volver" href="../">← Volver a «¿Tembló en Colombia?»</a>
+  </main>
+
+  <footer class="pie">
+    <p>Datos: USGS (dominio público) · Contornos: Natural Earth (dominio público) · Código: licencia MIT.</p>
+    <p class="creditos">Mario Puerta × <a href="https://www.linkedin.com/in/davidalexanderrinconcorredorkuronoma/">David Rincón «Kuronoma»</a> · <a href="https://github.com/ale0009">github.com/ale0009</a> · <a href="#">Portafolio</a></p>
+  </footer>
+</body>
+</html>

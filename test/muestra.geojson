@@ -1,0 +1,14 @@
+{
+  "type": "FeatureCollection",
+  "metadata": { "generated": 1794332255000, "title": "Muestra de prueba (inventada a partir del formato del USGS)", "count": 8 },
+  "features": [
+    { "type": "Feature", "id": "a1", "properties": { "mag": 4.6, "place": "Cerca de Los Santos, Colombia", "time": 1794320000000, "type": "earthquake", "magType": "mb", "url": "https://earthquake.usgs.gov/earthquakes/eventpage/a1", "felt": 12, "tsunami": 0 }, "geometry": { "type": "Point", "coordinates": [-73.1, 6.8, 150.2] } },
+    { "type": "Feature", "id": "a2", "properties": { "mag": 6.1, "place": "Costa del Pacífico", "time": 1793900000000, "type": "earthquake", "magType": "mww", "url": "https://earthquake.usgs.gov/earthquakes/eventpage/a2", "felt": null, "tsunami": 1 }, "geometry": { "type": "Point", "coordinates": [-79.5, 2.5, 20] } },
+    { "type": "Feature", "id": "a3", "properties": { "mag": 4.0, "place": "Norte de Perú", "time": 1792000000000, "type": "earthquake", "magType": "mb" }, "geometry": { "type": "Point", "coordinates": [-75.0, -4.9, 350] } },
+    { "type": "Feature", "id": "a4", "properties": { "mag": 4.6, "place": "Ecuador", "time": 1794300000000, "type": "earthquake", "magType": "mb" }, "geometry": { "type": "Point", "coordinates": [-78.5, -1.5, 30] } },
+    { "type": "Feature", "id": "b1", "properties": { "mag": 2.1, "place": "Cantera", "time": 1794310000000, "type": "quarry blast", "magType": "ml" }, "geometry": { "type": "Point", "coordinates": [-74.0, 4.6, 0] } },
+    { "type": "Feature", "id": "b2", "properties": { "mag": null, "place": "Sin magnitud", "time": 1794310000000, "type": "earthquake" }, "geometry": { "type": "Point", "coordinates": [-74.0, 4.6, 10] } },
+    { "type": "Feature", "id": "a1", "properties": { "mag": 4.6, "place": "Duplicado", "time": 1794320000000, "type": "earthquake", "magType": "mb" }, "geometry": { "type": "Point", "coordinates": [-73.1, 6.8, 150.2] } },
+    { "type": "Feature", "id": "a5", "properties": { "mag": 5.04, "place": "Sin profundidad", "time": 1793000000000, "type": "earthquake", "magType": "mwr" }, "geometry": { "type": "Point", "coordinates": [-70.0, 10.0] } }
+  ]
+}

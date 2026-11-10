@@ -1,0 +1,11 @@
+{
+  "name": "sismos-colombia",
+  "version": "1.0.0",
+  "description": "¿Tembló en Colombia? Mapa en vivo de los sismos de la región con la API pública del USGS. Página estática sin build.",
+  "type": "module",
+  "private": true,
+  "license": "MIT",
+  "author": "Mario Alejandro Puerta Alarcón",
+  "scripts": { "test": "node --test" },
+  "engines": { "node": ">=20" }
+}

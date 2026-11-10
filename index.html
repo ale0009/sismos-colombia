@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>¿Tembló en Colombia?</title>
+  <meta name="description" content="Mapa en vivo de los sismos de las últimas 24 horas, 7 días o 30 días en Colombia y alrededores, con datos públicos del USGS.">
+  <meta name="color-scheme" content="light dark">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bangers&family=IBM+Plex+Mono:wght@400;600&display=swap">
+  <link rel="stylesheet" href="css/estilo.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23F9F9F7'/%3E%3Cpath d='M2 17h6l3-9 5 16 4-12 3 5h7' fill='none' stroke='%23CB433E' stroke-width='3'/%3E%3C/svg%3E">
+  <script type="module" src="js/main.js"></script>
+</head>
+<body>
+  <a class="saltar" href="#mapa">Saltar al mapa</a>
+  <header class="cabecera">
+    <span class="kanji" aria-hidden="true">地震</span>
+    <div class="titulo">
+      <p class="antetitulo">Sismos en vivo · USGS</p>
+      <h1>¿Tembló en Colombia?</h1>
+    </div>
+    <nav class="nav">
+      <a class="boton-linea" href="proceso/">Cómo se hizo</a>
+      <button type="button" class="boton-linea" id="tema" aria-label="Cambiar tema">Tema: auto</button>
+    </nav>
+  </header>
+
+  <main class="tablero">
+    <section class="respuesta vineta" aria-live="polite" aria-labelledby="veredicto">
+      <p class="veredicto" id="veredicto"><span class="cargando-txt">Consultando…</span></p>
+      <p class="explica" id="explica">Pidiendo los datos al Servicio Geológico de EE. UU.</p>
+      <p class="estado" id="estado"><span class="chip chip-carga">Cargando</span></p>
+    </section>
+
+    <section class="controles vineta" aria-label="Filtros">
+      <fieldset class="periodo">
+        <legend>Periodo</legend>
+        <div class="segmentos">
+          <input type="radio" name="periodo" id="p24" value="24h"><label for="p24">24 h</label>
+          <input type="radio" name="periodo" id="p7" value="7d" checked><label for="p7">7 días</label>
+          <input type="radio" name="periodo" id="p30" value="30d"><label for="p30">30 días</label>
+        </div>
+      </fieldset>
+      <div class="magnitud">
+        <label for="mag">Magnitud mínima <output id="mag-out" for="mag">M 2,5</output></label>
+        <input type="range" id="mag" min="2.5" max="6.5" step="0.1" value="2.5">
+      </div>
+      <fieldset class="vista">
+        <legend>Vista</legend>
+        <div class="segmentos">
+          <input type="radio" name="vista" id="v-ambos" value="ambos" checked><label for="v-ambos">Calor + puntos</label>
+          <input type="radio" name="vista" id="v-calor" value="calor"><label for="v-calor">Calor</label>
+          <input type="radio" name="vista" id="v-puntos" value="puntos"><label for="v-puntos">Puntos</label>
+        </div>
+      </fieldset>
+    </section>
+
+    <figure class="mapa vineta" id="mapa" aria-busy="true">
+      <div class="lienzo" id="lienzo">
+        <div class="carga" id="carga"><span>Dibujando el mapa…</span></div>
+      </div>
+      <figcaption class="leyenda">
+        <span><i class="ley prof-superficial"></i>Superficial (&lt; 70 km)</span>
+        <span><i class="ley prof-intermedio"></i>Intermedio (70–300 km)</span>
+        <span><i class="ley prof-profundo"></i>Profundo (≥ 300 km)</span>
+        <span class="ley-tam">El tamaño crece con la magnitud</span>
+      </figcaption>
+    </figure>
+
+    <aside class="lateral">
+      <section class="hud vineta" aria-label="Resumen">
+        <div class="medidor"><span class="hud-n" id="h-n">–</span><span class="hud-l">sismos en la región</span></div>
+        <div class="medidor"><span class="hud-n rojo" id="h-max">–</span><span class="hud-l">magnitud máxima</span></div>
+        <div class="medidor"><span class="hud-n" id="h-col">–</span><span class="hud-l">con epicentro en Colombia</span></div>
+        <div class="medidor"><span class="hud-n cian" id="h-prof">–</span><span class="hud-l">el más profundo</span></div>
+      </section>
+
+      <section class="top vineta" aria-labelledby="top-t">
+        <h2 id="top-t">Los 5 más fuertes</h2>
+        <ol id="top" class="top-lista"></ol>
+      </section>
+
+      <section class="ficha vineta" id="ficha" aria-live="polite" hidden></section>
+    </aside>
+  </main>
+
+  <footer class="pie">
+    <p>Datos: <a href="https://earthquake.usgs.gov/fdsnws/event/1/">API pública de eventos del USGS</a> (dominio público) · Contornos: <a href="https://www.naturalearthdata.com/">Natural Earth</a> (dominio público). Para sismos pequeños y reportes oficiales en Colombia: <a href="https://www.sgc.gov.co/">Servicio Geológico Colombiano</a>.</p>
+    <p class="creditos">Mario Puerta × <a href="https://www.linkedin.com/in/davidalexanderrinconcorredorkuronoma/">David Rincón «Kuronoma»</a> · <a href="https://github.com/ale0009">github.com/ale0009</a> · <a href="#">Portafolio</a></p>
+  </footer>
+</body>
+</html>
